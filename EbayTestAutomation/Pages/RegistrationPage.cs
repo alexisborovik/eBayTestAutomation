@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
+using OpenQA.Selenium.Support.UI;
 
 namespace EbayTestAutomation.Pages
 {
@@ -25,6 +26,8 @@ namespace EbayTestAutomation.Pages
         private IWebElement phoneInput;
         [FindsBy(How = How.Id, Using = "sbtBtn")]
         private IWebElement registerButton;
+        [FindsBy(How = How.XPath, Using = ".//*[@id='phoneFlagComp1_r']/div[1]/div/div[1]")]
+        private IWebElement flagDropdown;
         [FindsBy(How = How.Id, Using = "ertx")]
         private IWebElement errorParagraph;
         [FindsBy(How = How.Id, Using = "email_w")]
@@ -45,6 +48,38 @@ namespace EbayTestAutomation.Pages
         public void Register()
         {
             registerButton.Click();
+        }
+
+        public void ChooseCountry(string country)
+        {
+            flagDropdown.Click();
+            IWebElement countryListElement = driver.FindElement(By.XPath(".//*[text()='" + country + "']"));
+            countryListElement.Click();
+        }
+
+        public void FillEmail(string email)
+        {
+            emailInput.SendKeys(email);
+        }
+
+        public void FillReenterEmail(string reenterEmail)
+        {
+            remailInput.SendKeys(reenterEmail);
+        }
+
+        public void FillPass(string password)
+        {
+            passwordInput.SendKeys(password);
+        }
+
+        public void FillFirstName(string firstName)
+        {
+            firstnameInput.SendKeys(firstName);
+        }
+
+        public void FillLastName(string lastName)
+        {
+            lastnameInput.SendKeys(lastName);
         }
     }
 }

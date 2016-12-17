@@ -8,13 +8,13 @@ namespace EbayTestAutomation
         [Test]
         public void TestConstructorClassic()
         {
-            /*
-            Pages.RegistrationPage pp = new Pages.RegistrationPage(BrowserDriver.Firefox);
+            
+            Pages.RegistrationPage pp = new Pages.RegistrationPage(BrowserDriver.Chrome);
             pp.LoadPage();
-            */
+            pp.ChooseCountry("Belarus");
            // pp.Register();
             
-            BrowserDriver.Chrome.Navigate().GoToUrl("https://signin.ebay.com/ws/eBayISAPI.dll?SellItem");
+           // BrowserDriver.Chrome.Navigate().GoToUrl("https://signin.ebay.com/ws/eBayISAPI.dll?SellItem");
            /* BrowserDriver.Firefox.Url = "http://www.google.com";
             BrowserDriver.Firefox.Navigate().GoToUrl("http://tut.by");
             Assert.AreEqual(0, 0);
