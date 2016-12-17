@@ -28,8 +28,8 @@ namespace EbayTestAutomation.Pages
         private IWebElement registerButton;
         [FindsBy(How = How.XPath, Using = ".//*[@id='phoneFlagComp1_r']/div[1]/div/div[1]")]
         private IWebElement flagDropdown;
-        [FindsBy(How = How.Id, Using = "ertx")]
-        private IWebElement errorParagraph;
+        [FindsBy(How = How.Id, Using = "statErr")]
+        private IWebElement errorStat;
         [FindsBy(How = How.Id, Using = "email_w")]
         private IWebElement emailWarning;
         [FindsBy(How = How.Id, Using = "remail_w")]
@@ -45,16 +45,19 @@ namespace EbayTestAutomation.Pages
         {
             driver.Navigate().GoToUrl(BASE_URL);
         }
-        public void Register()
+        public void ClickRegister()
         {
             registerButton.Click();
         }
 
         public void ChooseCountry(string country)
         {
-            flagDropdown.Click();
-            IWebElement countryListElement = driver.FindElement(By.XPath(".//*[text()='" + country + "']"));
-            countryListElement.Click();
+            if (!country.Equals(""))
+            {
+                flagDropdown.Click();
+                IWebElement countryListElement = driver.FindElement(By.XPath(".//*[text()='" + country + "']"));
+                countryListElement.Click();
+            }
         }
 
         public void FillEmail(string email)
@@ -80,6 +83,16 @@ namespace EbayTestAutomation.Pages
         public void FillLastName(string lastName)
         {
             lastnameInput.SendKeys(lastName);
+        }
+
+        public void FillPhoneNumber(string phone)
+        {
+            phoneInput.SendKeys(phone);
+        }
+
+        public bool IsErrorsExist()
+        {
+            return !(errorStat.GetCssValue("display").Equals("none"));
         }
     }
 }
