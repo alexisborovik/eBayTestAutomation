@@ -8,7 +8,7 @@ namespace EbayTestAutomation
 {
     public class Class1
     {
-        [Test]
+       // [Test]
         public void TestConstructorClassic()
         {/*
             BrowserDriver.Chrome.Navigate().GoToUrl("https://soundcloud.com/");

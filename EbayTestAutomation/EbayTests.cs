@@ -21,6 +21,7 @@ namespace EbayTestAutomation
         private string LAST_NAME = "Borovik";
         private string LOGIN = "AlexisBorovikTester";
         private string SEARCH_REQUEST = "INTEL CORE I7";
+        private string SEARCH_REQUEST_FOR_REMOVE = "INTEL CORE I5";
 
 
         private string ERR_PASS_MATCH_TO_NAME = "Ваш пароль не должен совпадать с вашим именем или адресом электронной почты.";
@@ -133,7 +134,7 @@ namespace EbayTestAutomation
         public void RemoveFromCart()
         {
             steps.SignIn(EMAIL, PASS, false);
-            steps.Search(SEARCH_REQUEST);
+            steps.Search(SEARCH_REQUEST_FOR_REMOVE);
             string itemTitle = steps.GoToSearchResult(1);
             steps.AddToCart();
             steps.TryRemoveItemFromCart(itemTitle);
