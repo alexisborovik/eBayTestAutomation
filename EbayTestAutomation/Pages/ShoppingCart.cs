@@ -25,5 +25,11 @@ namespace EbayTestAutomation.Pages
             IWebElement itemLink = driver.FindElementSafe(By.XPath(".//a[text() = '"+title+"']"));
             return itemLink.Exists();
         }
+
+        public void TryRemoveItemWithTitle(string title)
+        {
+            IWebElement removeLink = driver.FindElementSafe(By.XPath(".//a[text() = '" + title + "']/../../../../../../../../div[2]/div/div/a[1]"));
+            if (removeLink.Exists()) removeLink.Click();
+        }
     }
 }

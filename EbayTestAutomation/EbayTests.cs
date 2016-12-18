@@ -126,6 +126,18 @@ namespace EbayTestAutomation
             string itemTitle = steps.GoToSearchResult(1);
             steps.AddToCart();
             Assert.True(steps.IsItemWithTitleExsist(itemTitle));
+            steps.TryRemoveItemFromCart(itemTitle);
+        }
+
+        [Test]
+        public void RemoveFromCart()
+        {
+            steps.SignIn(EMAIL, PASS, false);
+            steps.Search(SEARCH_REQUEST);
+            string itemTitle = steps.GoToSearchResult(1);
+            steps.AddToCart();
+            steps.TryRemoveItemFromCart(itemTitle);
+            Assert.True(steps.IsItemWithTitleExsist(itemTitle));
         }
     }
 }

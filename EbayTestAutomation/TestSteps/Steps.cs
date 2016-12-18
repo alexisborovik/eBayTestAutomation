@@ -146,5 +146,12 @@ namespace EbayTestAutomation.Steps
             sc.LoadPage();
             return sc.isExistItemWithTitle(title);
         }
+
+        public void TryRemoveItemFromCart(string title)
+        {
+            ShoppingCart sc = new ShoppingCart(driver);
+            sc.LoadPage();
+            sc.TryRemoveItemWithTitle(title);
+        }
     }
 }
