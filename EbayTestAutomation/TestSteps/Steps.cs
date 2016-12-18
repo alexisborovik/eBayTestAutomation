@@ -119,5 +119,32 @@ namespace EbayTestAutomation.Steps
             mp.OpenGeoMenu();
             mp.ClickOnAvailableLang();
         }
+
+        public void Search(string request)
+        {
+            MainPage mp = new MainPage(driver);
+            mp.LoadPage();
+            mp.FillSearchInput(request);
+            mp.ClickSearchButt();
+        }
+
+        public string GoToSearchResult(int index)
+        {
+            SearchResultsPage sr = new SearchResultsPage(driver);
+            return sr.GoToResult();
+        }
+
+        public void AddToCart()
+        {
+            ProductDescritionPage pd = new ProductDescritionPage(driver);
+            pd.AddToCart();
+        }
+
+        public bool IsItemWithTitleExsist(string title)
+        {
+            ShoppingCart sc = new ShoppingCart(driver);
+            sc.LoadPage();
+            return sc.isExistItemWithTitle(title);
+        }
     }
 }

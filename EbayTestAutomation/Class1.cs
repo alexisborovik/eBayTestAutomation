@@ -2,13 +2,20 @@
 using EbayTestAutomation.WebDriver;
 using System.IO;
 using System;
+using OpenQA.Selenium;
+
 namespace EbayTestAutomation
 {
     public class Class1
     {
         [Test]
         public void TestConstructorClassic()
-        {
+        {/*
+            BrowserDriver.Chrome.Navigate().GoToUrl("https://soundcloud.com/");
+            IWebElement exitLink = BrowserDriver.Chrome.FindElement(By.XPath(".//*[@id='content']/div/div/div[3]/div/a[2]"));
+            System.Threading.Thread.Sleep(5000);
+            exitLink.Click();
+            */
             /*
             Pages.RegistrationPage pp = new Pages.RegistrationPage(BrowserDriver.Chrome);
             pp.LoadPage();

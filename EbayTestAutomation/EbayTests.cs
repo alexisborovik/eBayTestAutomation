@@ -20,6 +20,8 @@ namespace EbayTestAutomation
         private string FIRST_NAME = "Alexis";
         private string LAST_NAME = "Borovik";
         private string LOGIN = "AlexisBorovikTester";
+        private string SEARCH_REQUEST = "INTEL CORE I7";
+
 
         private string ERR_PASS_MATCH_TO_NAME = "Ваш пароль не должен совпадать с вашим именем или адресом электронной почты.";
         private string ERR_PASS_TOO_SHORT = "Введите как минимум 6 символов.";
@@ -115,6 +117,15 @@ namespace EbayTestAutomation
             steps.ChangeLang();
             string currLang = steps.GetCurrentLang();
             Assert.True(currLang.Equals(availableLang));
+        }
+        [Test]
+        public void AddToCart()
+        {
+            steps.SignIn(EMAIL, PASS, false);
+            steps.Search(SEARCH_REQUEST);
+            string itemTitle = steps.GoToSearchResult(1);
+            steps.AddToCart();
+            Assert.True(steps.IsItemWithTitleExsist(itemTitle));
         }
     }
 }

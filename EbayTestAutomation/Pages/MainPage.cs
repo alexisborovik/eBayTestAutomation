@@ -20,6 +20,10 @@ namespace EbayTestAutomation.Pages
         private IWebElement userMenu;
         [FindsBy(How = How.Id, Using = "gh-eb-Geo")]
         private IWebElement geoMenu;
+        [FindsBy(How = How.Id, Using = "gh-ac")]
+        private IWebElement searchInput;
+        [FindsBy(How = How.Id, Using = "gh-btn")]
+        private IWebElement searchButt;
 
         public MainPage(IWebDriver driver) : base(driver)
         {
@@ -73,6 +77,16 @@ namespace EbayTestAutomation.Pages
         {
             IWebElement langMenuAvL = driver.FindElement(By.XPath(AVAILABLE_LANG_XPATH));
             langMenuAvL.Click();
+        }
+
+        public void FillSearchInput(string request)
+        {
+            searchInput.SendKeys(request);
+        }
+
+        public void ClickSearchButt()
+        {
+            searchButt.Click();
         }
     }
 }
