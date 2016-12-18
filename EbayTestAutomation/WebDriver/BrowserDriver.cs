@@ -47,7 +47,7 @@ namespace EbayTestAutomation.WebDriver
         }
         private static void configureDriver(IWebDriver instance)
         {
-            instance.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(30));
+            instance.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(15));
             instance.Manage().Window.Maximize();
         }
 

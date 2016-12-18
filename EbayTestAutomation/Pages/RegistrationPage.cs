@@ -6,12 +6,14 @@ using System.Threading.Tasks;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
 using OpenQA.Selenium.Support.UI;
+using EbayTestAutomation.Extensions;
 
 namespace EbayTestAutomation.Pages
 {
     class RegistrationPage : PageBase
     {
         private const string BASE_URL = "https://reg.ebay.com/reg/PartialReg";
+        private const string SHOPPING_LINK_XPATH = ".//*[@id='LetsGoShoppingLink']";
         [FindsBy(How = How.Id, Using = "email")]
         private IWebElement emailInput;
         [FindsBy(How = How.Id, Using = "remail")]
@@ -93,6 +95,33 @@ namespace EbayTestAutomation.Pages
         public bool IsErrorsExist()
         {
             return !(errorStat.GetCssValue("display").Equals("none"));
+        }
+
+        public bool IsSecondEmailWrong()
+        {
+            return remailWarning.Displayed;
+        }
+
+        public bool IsEmailWrong()
+        {
+            return emailWarning.Displayed;
+        }
+
+        public string GetPassErrorMessage()
+        {
+            string T= passwordWarning.Text;
+            return T;
+        }
+
+        public bool TryGoShopping()
+        {
+            IWebElement shoppingLink = driver.FindElementSafe(By.XPath(SHOPPING_LINK_XPATH));
+            if (shoppingLink.Exists())
+            {
+                shoppingLink.Click();
+                return true;
+            }
+            return false;
         }
     }
 }

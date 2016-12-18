@@ -12,6 +12,8 @@ namespace EbayTestAutomation
             Pages.RegistrationPage pp = new Pages.RegistrationPage(BrowserDriver.Chrome);
             pp.LoadPage();
             pp.ChooseCountry("Belarus");
+            bool b = pp.TryGoShopping();
+            int a = 0;
            // pp.Register();
             
            // BrowserDriver.Chrome.Navigate().GoToUrl("https://signin.ebay.com/ws/eBayISAPI.dll?SellItem");
