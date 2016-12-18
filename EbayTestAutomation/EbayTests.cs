@@ -43,7 +43,7 @@ namespace EbayTestAutomation
         [Test]
         public void RegisterWithEmptyFields()
         {
-            steps.Register("", "", "", "", "", "","");
+            steps.Register("", "", "", "", "", "", "");
             Assert.True(steps.IsRegisterErrorsExist());
         }
 
@@ -139,6 +139,42 @@ namespace EbayTestAutomation
             steps.AddToCart();
             steps.TryRemoveItemFromCart(itemTitle);
             Assert.True(steps.IsItemWithTitleExsist(itemTitle));
+        }
+
+        [Test]
+        public void SaveForLater()
+        {
+            steps.SignIn(EMAIL, PASS, false);
+            steps.Search(SEARCH_REQUEST);
+            string itemTitle = steps.GoToSearchResult(1);
+            steps.AddToCart();
+            steps.TrySaveForLater(itemTitle);
+            Assert.True(steps.IsItemExsistInLaterList(itemTitle));
+            steps.TryRemoveFromLater(itemTitle);
+        }
+
+        [Test]
+        public void BackFromLaterToCart()
+        {
+            steps.SignIn(EMAIL, PASS, false);
+            steps.Search(SEARCH_REQUEST);
+            string itemTitle = steps.GoToSearchResult(1);
+            steps.AddToCart();
+            steps.TrySaveForLater(itemTitle);
+            steps.TryBackFromLaterToCart(itemTitle);
+            Assert.False(steps.IsItemExsistInLaterList(itemTitle));
+            steps.TryRemoveItemFromCart(itemTitle);
+        }
+        [Test]
+        public void RemoveFromLater()
+        {
+            steps.SignIn(EMAIL, PASS, false);
+            steps.Search(SEARCH_REQUEST);
+            string itemTitle = steps.GoToSearchResult(1);
+            steps.AddToCart();
+            steps.TrySaveForLater(itemTitle);
+            steps.TryRemoveFromLater(itemTitle);
+            Assert.False(steps.IsItemWithTitleExsist(itemTitle));
         }
     }
 }

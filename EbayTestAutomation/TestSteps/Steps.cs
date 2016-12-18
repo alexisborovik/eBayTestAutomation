@@ -153,5 +153,33 @@ namespace EbayTestAutomation.Steps
             sc.LoadPage();
             sc.TryRemoveItemWithTitle(title);
         }
+
+        public void TrySaveForLater(string title)
+        {
+            ShoppingCart sc = new ShoppingCart(driver);
+            sc.LoadPage();
+            sc.TryAddToSaveForLaterList(title);
+        }
+
+        public bool IsItemExsistInLaterList(string title)
+        {
+            ShoppingCart sc = new ShoppingCart(driver);
+            sc.LoadPage();
+            return sc.IsItemExsistInLaterList(title);
+        }
+
+        public void TryBackFromLaterToCart(string title)
+        {
+            ShoppingCart sc = new ShoppingCart(driver);
+            sc.LoadPage();
+            sc.TryBackFromSaveForLaterList(title);
+        }
+
+        public void TryRemoveFromLater(string title)
+        {
+            ShoppingCart sc = new ShoppingCart(driver);
+            sc.LoadPage();
+            sc.TryRemoveFromLater(title);
+        }
     }
 }
