@@ -1,9 +1,4 @@
 ﻿using OpenQA.Selenium;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using EbayTestAutomation.WebDriver;
 using EbayTestAutomation.Pages;
 
@@ -20,6 +15,12 @@ namespace EbayTestAutomation.Steps
         public void CloseBrowser()
         {
             BrowserDriver.closeChrome();
+        }
+
+        public void RestartBrowser()
+        {
+            driver.Close();
+            StartBrowser();
         }
 
         public void Register(string email, string secondEmail, string firstName, string lastName, string pass, string phone, string country)
@@ -91,7 +92,32 @@ namespace EbayTestAutomation.Steps
         {
             MainPage mp = new MainPage(driver);
             mp.LoadPage();
+            mp.OpenUserMenu();
             return mp.TryLogOut();
+        }
+
+        public string GetCurrentLang()
+        {
+            MainPage mp = new MainPage(driver);
+            mp.LoadPage();
+            mp.OpenGeoMenu();
+            return mp.GetCurrentLang();
+        }
+
+        public string GetAvailableLang()
+        {
+            MainPage mp = new MainPage(driver);
+            mp.LoadPage();
+            mp.OpenGeoMenu();
+            return mp.GetAvailableLang();
+        }
+
+        public void ChangeLang()
+        {
+            MainPage mp = new MainPage(driver);
+            mp.LoadPage();
+            mp.OpenGeoMenu();
+            mp.ClickOnAvailableLang();
         }
     }
 }

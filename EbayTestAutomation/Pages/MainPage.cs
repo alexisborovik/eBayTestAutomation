@@ -13,9 +13,13 @@ namespace EbayTestAutomation.Pages
     {
         private const string BASE_URL = "https://ebay.com";
         private const string LOGOUT_LINK_XPATH = ".//*[@id='gh-uo']/a";
+        private const string CURRENT_LANG_XPATH = ".//*[@id='gh-eb-Geo-a-default']/span[2]";
+        private const string AVAILABLE_LANG_XPATH = ".//*[@id='gh-eb-Geo-a-en']/span[2]";
 
         [FindsBy(How = How.Id, Using = "gh-eb-u")]
         private IWebElement userMenu;
+        [FindsBy(How = How.Id, Using = "gh-eb-Geo")]
+        private IWebElement geoMenu;
 
         public MainPage(IWebDriver driver) : base(driver)
         {
@@ -46,6 +50,29 @@ namespace EbayTestAutomation.Pages
                 return true;
             }
             else return false;
+        }
+
+        public void OpenGeoMenu()
+        {
+            geoMenu.Click();
+        }
+
+        public string GetCurrentLang()
+        {
+            IWebElement langMenuCurL = driver.FindElement(By.XPath(CURRENT_LANG_XPATH));
+            return langMenuCurL.Text;
+        }
+
+        public string GetAvailableLang()
+        {
+            IWebElement langMenuAvL = driver.FindElement(By.XPath(AVAILABLE_LANG_XPATH));
+            return langMenuAvL.Text;
+        }
+
+        public void ClickOnAvailableLang()
+        {
+            IWebElement langMenuAvL = driver.FindElement(By.XPath(AVAILABLE_LANG_XPATH));
+            langMenuAvL.Click();
         }
     }
 }

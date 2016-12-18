@@ -2,6 +2,7 @@
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium;
+using System.IO;
 
 namespace EbayTestAutomation.WebDriver
 {
@@ -17,7 +18,7 @@ namespace EbayTestAutomation.WebDriver
                 if(firefox == null)
                 {
                     firefox = new FirefoxDriver();
-                    configureDriver(firefox);
+                    configureDriver(ref firefox);
                 }
                 return firefox;
             }
@@ -30,7 +31,7 @@ namespace EbayTestAutomation.WebDriver
                 if(chrome == null)
                 {
                     chrome = new ChromeDriver();
-                    configureDriver(chrome);
+                    configureDriver(ref chrome);
                 }
                 return chrome;
             }
@@ -38,26 +39,44 @@ namespace EbayTestAutomation.WebDriver
 
         public static void closeFirefox()
         {
-            quitDriver(firefox);
+            quitDriver(ref firefox);
         }
 
         public static void closeChrome()
         {
-            quitDriver(chrome);
+            quitDriver(ref chrome);
         }
-        private static void configureDriver(IWebDriver instance)
+        private static void configureDriver(ref IWebDriver instance)
         {
             instance.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(15));
             instance.Manage().Window.Maximize();
         }
 
-        private static void quitDriver(IWebDriver instance)
+        private static void quitDriver(ref IWebDriver instance)
         {
             if (instance != null)
             {
                 instance.Quit();
                 instance = null;
             }
+        }
+
+        public static void CreateChromeProfile()
+        {
+            string cd = Directory.GetCurrentDirectory() + @"\ChromeProfile";
+            Directory.CreateDirectory(cd);
+            System.Diagnostics.Process process = new System.Diagnostics.Process();
+            System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
+            //startInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
+            startInfo.FileName = "cmd.exe";
+            startInfo.Arguments =
+                "/C \"C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe\" --user-data-dir=\"" + cd + "\" -first-run";
+            process.StartInfo = startInfo;
+            process.Start();
+            /*
+                    string cd = Directory.GetCurrentDirectory() + @"\ChromeProfile";
+                    ChromeOptions co = new ChromeOptions();
+                    co.AddArgument("user-data-dir=" + cd);*/
         }
 
     }
