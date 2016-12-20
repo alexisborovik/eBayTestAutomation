@@ -23,9 +23,7 @@ namespace EbayTestAutomation.Extensions
 
         public static bool Exists(this IWebElement element)
         {
-            if (element == null)
-            { return false; }
-            return true;
+            return (element == null) ? false : true;
         }
     }
 }
