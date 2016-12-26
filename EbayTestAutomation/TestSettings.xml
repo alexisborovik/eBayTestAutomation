@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<testsettings>
+  <email>firsttestemail@mail.ru</email>
+  <second_email>secondtestemail@mail.ru</second_email>
+  <incorrect_email>INCORRECT@mailru</incorrect_email>
+  <phone>259258290</phone>
+  <country>Belarus</country>
+  <pass>12345qazWSX</pass>
+  <short_pass>qA1!</short_pass>
+  <pass_contains_only_digits>1029384756</pass_contains_only_digits>
+  <firstname>Alexis</firstname>
+  <lastname>Borovik</lastname>
+  <login>AlexisBorovikTester</login>
+  <search_request>INTEL CORE I7</search_request>
+  <search_request_for_remove>INTEL CORE I5</search_request_for_remove>
+  <err_pass_match_to_name>Ваш пароль не должен совпадать с вашим именем или адресом электронной почты.</err_pass_match_to_name>
+  <err_pass_too_short>Введите как минимум 6 символов.</err_pass_too_short>
+  <err_pass_requirements>Придумайте пароль, состоящий как минимум из 6 символов и представляющий комбинацию букв, цифр и специальных символов.</err_pass_requirements>
+</testsettings>

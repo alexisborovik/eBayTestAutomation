@@ -60,24 +60,5 @@ namespace EbayTestAutomation.WebDriver
                 instance = null;
             }
         }
-
-        public static void CreateChromeProfile()
-        {
-            string cd = Directory.GetCurrentDirectory() + @"\ChromeProfile";
-            Directory.CreateDirectory(cd);
-            System.Diagnostics.Process process = new System.Diagnostics.Process();
-            System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
-            //startInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
-            startInfo.FileName = "cmd.exe";
-            startInfo.Arguments =
-                "/C \"C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe\" --user-data-dir=\"" + cd + "\" -first-run";
-            process.StartInfo = startInfo;
-            process.Start();
-            /*
-                    string cd = Directory.GetCurrentDirectory() + @"\ChromeProfile";
-                    ChromeOptions co = new ChromeOptions();
-                    co.AddArgument("user-data-dir=" + cd);*/
-        }
-
     }
 }
