@@ -33,7 +33,8 @@ namespace EbayTestAutomation
         [Test]
         public void Register()
         {
-            steps.Register(settings["EMAIL"],
+            steps.Register(
+                settings["EMAIL"],
                 settings["EMAIL"],
                 settings["FIRSTNAME"],
                 settings["LASTNAME"],
@@ -46,7 +47,8 @@ namespace EbayTestAutomation
         [Test]
         public void RegisterWithDifferentEmails()
         {
-            steps.Register(settings["EMAIL"],
+            steps.Register(
+                settings["EMAIL"],
                 settings["SECOND_EMAIL"],
                 settings["FIRSTNAME"],
                 settings["LASTNAME"],
@@ -59,7 +61,8 @@ namespace EbayTestAutomation
         [Test]
         public void RegisterWithIncorrectEmail()
         {
-            steps.Register(settings["INCORRECT_EMAIL"],
+            steps.Register(
+                settings["INCORRECT_EMAIL"],
                 settings["INCORRECT_EMAIL"],
                 settings["FIRSTNAME"], 
                 settings["LASTNAME"],
@@ -72,7 +75,8 @@ namespace EbayTestAutomation
         [Test]
         public void RegisterWithPassEqualsToEmail()
         {
-            steps.Register(settings["EMAIL"],
+            steps.Register(
+                settings["EMAIL"],
                 settings["EMAIL"], 
                 settings["FIRSTNAME"],
                 settings["LASTNAME"],
@@ -85,7 +89,8 @@ namespace EbayTestAutomation
         [Test]
         public void RegisterWithPassContainsOnlyDigits()
         {
-            steps.Register(settings["EMAIL"], 
+            steps.Register(
+                settings["EMAIL"], 
                 settings["EMAIL"], 
                 settings["FIRSTNAME"],
                 settings["LASTNAME"], 
@@ -98,7 +103,8 @@ namespace EbayTestAutomation
         [Test]
         public void RegisterWithShortPass()
         {
-            steps.Register(settings["EMAIL"],
+            steps.Register(
+                settings["EMAIL"],
                 settings["EMAIL"],
                 settings["FIRSTNAME"],
                 settings["LASTNAME"],
