@@ -11,6 +11,11 @@ namespace EbayTestAutomation.WebDriver
         private static IWebDriver firefox;
         private static IWebDriver chrome;
 
+        private BrowserDriver()
+        {
+
+        }
+
         public static IWebDriver Firefox
         {
             get
