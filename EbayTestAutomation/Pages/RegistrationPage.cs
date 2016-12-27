@@ -13,7 +13,7 @@ namespace EbayTestAutomation.Pages
     class RegistrationPage : PageBase
     {
         private const string BASE_URL = "https://reg.ebay.com/reg/PartialReg";
-        private const string SHOPPING_LINK_XPATH = ".//*[@id='LetsGoShoppingLink']";
+        private const string SHOPPING_LINK = "LetsGoShoppingLink]";
         [FindsBy(How = How.Id, Using = "email")]
         private IWebElement emailInput;
         [FindsBy(How = How.Id, Using = "remail")]
@@ -57,7 +57,7 @@ namespace EbayTestAutomation.Pages
             if (!country.Equals(""))
             {
                 flagDropdown.Click();
-                IWebElement countryListElement = driver.FindElement(By.XPath(".//*[text()='" + country + "']"));
+                IWebElement countryListElement = driver.FindElement(By.XPath(".//span[text()='" + country + "']"));
                 countryListElement.Click();
             }
         }
@@ -115,7 +115,7 @@ namespace EbayTestAutomation.Pages
 
         public bool TryGoShopping()
         {
-            IWebElement shoppingLink = driver.FindElementSafe(By.XPath(SHOPPING_LINK_XPATH));
+            IWebElement shoppingLink = driver.FindElementSafe(By.Id(SHOPPING_LINK));
             if (shoppingLink.Exists())
             {
                 shoppingLink.Click();

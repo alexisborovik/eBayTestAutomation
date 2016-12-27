@@ -15,7 +15,7 @@ namespace EbayTestAutomation.Pages
         private IWebElement emailInput;
         [FindsBy(How = How.XPath, Using = ".//div[@id='pri_signin']/div[5]/span[2]/input[1]")]
         private IWebElement passwordInput;
-        [FindsBy(How = How.XPath, Using = ".//*[@id='csi']")]
+        [FindsBy(How = How.Id, Using = "csi")]
         private IWebElement stayignedCheckbox;
         [FindsBy(How = How.Id, Using = "sgnBt")]
         private IWebElement signButton;

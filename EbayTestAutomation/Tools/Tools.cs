@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
@@ -14,9 +16,11 @@ namespace EbayTestAutomation.Tools
             return DateTime.Now.ToString("MMddyyHmmss");
         }
 
-        public static Dictionary<string,string> LoadSettings(string path = "./EbayTestAutomation/TestSettings.xml")
+        public static Dictionary<string,string> LoadSettings(string path = "")
         {
-            Dictionary<string, string> sett = new Dictionary<string, string>();
+            if(path.Equals(""))
+            path = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "TestSettings.xml");
+            Dictionary <string, string> sett = new Dictionary<string, string>();
             XmlDocument document = new XmlDocument();
             document.Load(path);
             foreach (XmlNode node in document.DocumentElement.ChildNodes)
