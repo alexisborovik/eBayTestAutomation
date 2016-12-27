@@ -12,5 +12,10 @@ namespace EbayTestAutomation.Pages
             this.driver = driver;
             PageFactory.InitElements(driver, this);
         }
+
+        public void ScrollToBottom()
+        {
+            ((IJavaScriptExecutor)driver).ExecuteScript("window.scrollTo(0,document.body.scrollHeight);");
+        }
     }
 }
