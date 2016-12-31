@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using NUnit.Framework;
 using EbayTestAutomation.Steps;
 using EbayTestAutomation.Tools;

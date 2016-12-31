@@ -1,13 +1,23 @@
 ﻿using OpenQA.Selenium;
 using EbayTestAutomation.Extensions;
+using System;
 
 namespace EbayTestAutomation.Pages
 {
     class ShoppingCart : PageBase
     {
         private const string BASE_URL = "http://cart.payments.ebay.com/sc/view";
+        private const string REMOVE_FROM_CART = "http://cart.payments.ebay.com/sc/rfc";
+        private const string SAVE_FOR_LATER = "http://cart.payments.ebay.com/sc/sfl";
+        private const string REMOVE_FROM_LATER = "http://cart.payments.ebay.com/sc/rfsfl";
+        private const string FROM_LATER_TO_CART = "http://cart.payments.ebay.com/sc/sflatc";
         public ShoppingCart(IWebDriver driver) : base(driver)
         {
+        }
+
+        private string ConfigXPath(string textToFind, string linkTo)
+        {
+            return String.Format(".//div[.//a[contains(text(),'{0}')] and contains(@class,'fl col_100p talign balign clearfix')]//a[starts-with(@href,'{1}')]", textToFind, linkTo);
         }
 
         public void LoadPage()
@@ -23,15 +33,13 @@ namespace EbayTestAutomation.Pages
 
         public void RemoveItemFromCart(string title)
         {
-            string xpath = ".//div[.//a[contains(text(),'" + title + "')] and contains(@class,'fl col_100p talign balign clearfix')]//a[starts-with(@href,'http://cart.payments.ebay.com/sc/rfc')]";
-            IWebElement removeLink = driver.FindElementSafe(By.XPath(xpath));
+            IWebElement removeLink = driver.FindElementSafe(By.XPath(ConfigXPath(title,REMOVE_FROM_CART)));
             if (removeLink.Exists()) removeLink.Click();
         }
 
         public void AddToSaveForLaterList(string title)
         {
-            string xpath = ".//div[.//a[contains(text(),'" + title + "')] and contains(@class,'fl col_100p talign balign clearfix')]//a[starts-with(@href,'http://cart.payments.ebay.com/sc/sfl')]";
-            IWebElement addToLaterLink = driver.FindElementSafe(By.XPath(xpath));
+            IWebElement addToLaterLink = driver.FindElementSafe(By.XPath(ConfigXPath(title,SAVE_FOR_LATER)));
             if (addToLaterLink.Exists())
             {
                 addToLaterLink.Click();
@@ -40,8 +48,7 @@ namespace EbayTestAutomation.Pages
 
         public void BackFromSaveForLaterList(string title)
         {
-            string xpath = ".//div[.//a[contains(text(),'" + title + "')] and contains(@class,'fl col_100p talign balign clearfix')]//a[starts-with(@href,'http://cart.payments.ebay.com/sc/sflatc')]";
-            IWebElement backToCartLink = driver.FindElementSafe(By.XPath(xpath));
+            IWebElement backToCartLink = driver.FindElementSafe(By.XPath(ConfigXPath(title,FROM_LATER_TO_CART)));
             if (backToCartLink.Exists()) backToCartLink.Click();
         }
 
@@ -53,8 +60,7 @@ namespace EbayTestAutomation.Pages
 
         public void RemoveFromLater(string title)
         {
-            string xpath = ".//div[.//a[contains(text(),'" + title + "')] and contains(@class,'fl col_100p talign balign clearfix')]//a[starts-with(@href,'http://cart.payments.ebay.com/sc/rfsfl')]";
-            IWebElement removeLink = driver.FindElementSafe(By.XPath(xpath));
+            IWebElement removeLink = driver.FindElementSafe(By.XPath(ConfigXPath(title,REMOVE_FROM_LATER)));
             if (removeLink.Exists()) removeLink.Click();
         }
 
