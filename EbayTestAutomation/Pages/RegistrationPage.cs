@@ -28,7 +28,7 @@ namespace EbayTestAutomation.Pages
         private IWebElement phoneInput;
         [FindsBy(How = How.Id, Using = "sbtBtn")]
         private IWebElement registerButton;
-        [FindsBy(How = How.XPath, Using = ".//*[@id='phoneFlagComp1_r']/div[1]/div/div[1]")]
+        [FindsBy(How = How.ClassName, Using = "flag-dropdown")]
         private IWebElement flagDropdown;
         [FindsBy(How = How.Id, Using = "statErr")]
         private IWebElement errorStat;

@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
 
 namespace EbayTestAutomation.Pages
 {
     class ProductDescritionPage : PageBase
     {
+        [FindsBy(How = How.Id, Using = "itemTitle")]
+        private IWebElement title;
         [FindsBy(How = How.Id, Using = "isCartBtn_btn")]
         private IWebElement addToCart;
 
@@ -17,9 +14,11 @@ namespace EbayTestAutomation.Pages
         {
         }
 
-        public void AddToCart()
+        public string AddToCart()
         {
+            string ttt = title.Text;
             addToCart.Click();
+            return ttt;
         }
 
     }

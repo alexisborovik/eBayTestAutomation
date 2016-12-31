@@ -151,8 +151,8 @@ namespace EbayTestAutomation
             steps.Search(settings["SEARCH_REQUEST"]);
             string itemTitle = steps.GoToSearchResult(1);
             steps.AddToCart();
-            Assert.True(steps.IsItemWithTitleExsist(itemTitle));
-            steps.TryRemoveItemFromCart(itemTitle);
+            Assert.True(steps.IsItemInCart(itemTitle));
+            steps.RemoveFromCart(itemTitle);
         }
 
         [Test]
@@ -162,8 +162,8 @@ namespace EbayTestAutomation
             steps.Search(settings["SEARCH_REQUEST_FOR_REMOVE"]);
             string itemTitle = steps.GoToSearchResult(1);
             steps.AddToCart();
-            steps.TryRemoveItemFromCart(itemTitle);
-            Assert.False(steps.IsItemWithTitleExsist(itemTitle));
+            steps.RemoveFromCart(itemTitle);
+            Assert.False(steps.IsItemInCart(itemTitle));
         }
 
         [Test]
@@ -173,9 +173,9 @@ namespace EbayTestAutomation
             steps.Search(settings["SEARCH_REQUEST"]);
             string itemTitle = steps.GoToSearchResult(1);
             steps.AddToCart();
-            steps.TrySaveForLater(itemTitle);
+            steps.SaveForLater(itemTitle);
             Assert.True(steps.IsItemExsistInLaterList(itemTitle));
-            steps.TryRemoveFromLater(itemTitle);
+            steps.RemoveFromLaterList(itemTitle);
         }
 
         [Test]
@@ -185,10 +185,10 @@ namespace EbayTestAutomation
             steps.Search(settings["SEARCH_REQUEST"]);
             string itemTitle = steps.GoToSearchResult(1);
             steps.AddToCart();
-            steps.TrySaveForLater(itemTitle);
-            steps.TryBackFromLaterToCart(itemTitle);
+            steps.SaveForLater(itemTitle);
+            steps.BackFromLaterToCart(itemTitle);
             Assert.False(steps.IsItemExsistInLaterList(itemTitle));
-            steps.TryRemoveItemFromCart(itemTitle);
+            steps.RemoveFromCart(itemTitle);
         }
         [Test]
         public void RemoveFromLater()
@@ -197,9 +197,9 @@ namespace EbayTestAutomation
             steps.Search(settings["SEARCH_REQUEST"]);
             string itemTitle = steps.GoToSearchResult(1);
             steps.AddToCart();
-            steps.TrySaveForLater(itemTitle);
-            steps.TryRemoveFromLater(itemTitle);
-            Assert.False(steps.IsItemWithTitleExsist(itemTitle));
+            steps.SaveForLater(itemTitle);
+            steps.RemoveFromLaterList(itemTitle);
+            Assert.False(steps.IsItemInCart(itemTitle));
         }
     }
 }

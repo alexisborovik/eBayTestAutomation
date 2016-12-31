@@ -12,9 +12,9 @@ namespace EbayTestAutomation.Pages
     class MainPage : PageBase
     {
         private const string BASE_URL = "https://ebay.com";
-        private const string LOGOUT_LINK_XPATH = ".//*[@id='gh-uo']/a";
-        private const string CURRENT_LANG_XPATH = ".//*[@id='gh-eb-Geo-a-default']/span[2]";
-        private const string AVAILABLE_LANG_XPATH = ".//*[@id='gh-eb-Geo-a-en']/span[2]";
+        private const string LOGOUT_LINK_XPATH = ".//li[@id='gh-uo']/a";
+        private const string CURRENT_LANG_XPATH = ".//a[@id='gh-eb-Geo-a-default']/span[@class='gh-eb-Geo-txt']";
+        private const string AVAILABLE_LANG_XPATH = ".//a[@id='gh-eb-Geo-a-en']/span[@class='gh-eb-Geo-txt']";
 
         [FindsBy(How = How.Id, Using = "gh-eb-u")]
         private IWebElement userMenu;

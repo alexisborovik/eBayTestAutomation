@@ -134,31 +134,31 @@ namespace EbayTestAutomation.Steps
             return sr.GoToResult();
         }
 
-        public void AddToCart()
+        public string AddToCart()
         {
             ProductDescritionPage pd = new ProductDescritionPage(driver);
-            pd.AddToCart();
+            return pd.AddToCart();
         }
 
-        public bool IsItemWithTitleExsist(string title)
+        public bool IsItemInCart(string title)
         {
             ShoppingCart sc = new ShoppingCart(driver);
             sc.LoadPage();
-            return sc.isExistItemWithTitle(title);
+            return sc.isItemExistsInCart(title);
         }
 
-        public void TryRemoveItemFromCart(string title)
+        public void RemoveFromCart(string title)
         {
             ShoppingCart sc = new ShoppingCart(driver);
             sc.LoadPage();
-            sc.TryRemoveItemWithTitle(title);
+            sc.RemoveItemFromCart(title);
         }
 
-        public void TrySaveForLater(string title)
+        public void SaveForLater(string title)
         {
             ShoppingCart sc = new ShoppingCart(driver);
             sc.LoadPage();
-            sc.TryAddToSaveForLaterList(title);
+            sc.AddToSaveForLaterList(title);
         }
 
         public bool IsItemExsistInLaterList(string title)
@@ -168,18 +168,18 @@ namespace EbayTestAutomation.Steps
             return sc.IsItemExsistInLaterList(title);
         }
 
-        public void TryBackFromLaterToCart(string title)
+        public void BackFromLaterToCart(string title)
         {
             ShoppingCart sc = new ShoppingCart(driver);
             sc.LoadPage();
-            sc.TryBackFromSaveForLaterList(title);
+            sc.BackFromSaveForLaterList(title);
         }
 
-        public void TryRemoveFromLater(string title)
+        public void RemoveFromLaterList(string title)
         {
             ShoppingCart sc = new ShoppingCart(driver);
             sc.LoadPage();
-            sc.TryRemoveFromLater(title);
+            sc.RemoveFromLater(title);
         }
     }
 }
