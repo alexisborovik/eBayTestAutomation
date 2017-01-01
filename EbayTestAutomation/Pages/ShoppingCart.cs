@@ -40,10 +40,7 @@ namespace EbayTestAutomation.Pages
         public void AddToSaveForLaterList(string title)
         {
             IWebElement addToLaterLink = driver.FindElementSafe(By.XPath(ConfigXPath(title,SAVE_FOR_LATER)));
-            if (addToLaterLink.Exists())
-            {
-                addToLaterLink.Click();
-            }
+            if (addToLaterLink.Exists())addToLaterLink.Click();
         }
 
         public void BackFromSaveForLaterList(string title)
