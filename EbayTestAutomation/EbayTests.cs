@@ -25,7 +25,14 @@ namespace EbayTestAutomation
         [Test]
         public void RegisterWithEmptyFields()
         {
-            steps.Register("", "", "", "", "", "", "");
+            steps.Register(
+                email: "",
+                secondEmail: "",
+                firstName: "",
+                lastName: "",
+                pass: "",
+                phone: "",
+                country: "");
             Assert.True(steps.IsRegisterErrorsExist());
         }
 
