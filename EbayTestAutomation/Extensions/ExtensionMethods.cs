@@ -1,9 +1,4 @@
 ﻿using OpenQA.Selenium;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EbayTestAutomation.Extensions
 {
@@ -24,6 +19,11 @@ namespace EbayTestAutomation.Extensions
         public static bool Exists(this IWebElement element)
         {
             return (element == null) ? false : true;
+        }
+
+        public static bool IsElementExists(this IWebDriver driver, By findsBy)
+        {
+            return (driver.FindElements(findsBy).Count != 0) ? true : false;
         }
     }
 }

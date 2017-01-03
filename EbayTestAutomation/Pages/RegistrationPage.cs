@@ -57,7 +57,7 @@ namespace EbayTestAutomation.Pages
             if (!country.Equals(""))
             {
                 flagDropdown.Click();
-                IWebElement countryListElement = driver.FindElement(By.XPath(".//span[text()='" + country + "']"));
+                IWebElement countryListElement = driver.FindElement(By.XPath("//span[text()='" + country + "']"));
                 countryListElement.Click();
             }
         }
@@ -109,11 +109,11 @@ namespace EbayTestAutomation.Pages
 
         public string GetPassErrorMessage()
         {
-            string T= passwordWarning.Text;
-            return T;
+            string wText = passwordWarning.Text;
+            return wText;
         }
 
-        public bool TryGoShopping()
+        public bool GoShopping()
         {
             IWebElement shoppingLink = driver.FindElementSafe(By.Id(SHOPPING_LINK));
             if (shoppingLink.Exists())

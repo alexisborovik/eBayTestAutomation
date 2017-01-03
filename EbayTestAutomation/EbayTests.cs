@@ -138,7 +138,7 @@ namespace EbayTestAutomation
         public void CheckLogout()
         {
             steps.SignIn(settings["EMAIL"], settings["PASS"], true);
-            steps.TryLogout();
+            steps.Logout();
             Assert.False(steps.IsSignedIn());
         }
 

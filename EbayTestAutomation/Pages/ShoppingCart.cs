@@ -15,9 +15,9 @@ namespace EbayTestAutomation.Pages
         {
         }
 
-        private string ConfigXPath(string textToFind, string linkTo)
+        private string ConfigActionLinkXPath(string textToFind, string linkTo)
         {
-            return String.Format(".//div[.//a[contains(text(),'{0}')] and contains(@class,'fl col_100p talign balign clearfix')]//a[starts-with(@href,'{1}')]", textToFind, linkTo);
+            return String.Format("//div[.//a[contains(text(),'{0}')] and contains(@class,'fl col_100p talign balign clearfix')]//a[starts-with(@href,'{1}')]", textToFind, linkTo);
         }
 
         public void LoadPage()
@@ -27,37 +27,37 @@ namespace EbayTestAutomation.Pages
 
         public bool isItemExistsInCart(string title)
         {
-            IWebElement itemLink = driver.FindElementSafe(By.XPath(".//div[@id='CARTSection']//a[contains(text(),'" + title + "')]"));
+            IWebElement itemLink = driver.FindElementSafe(By.XPath("//div[@id='CARTSection']//a[contains(text(),'" + title + "')]"));
             return itemLink.Exists();
         }
 
         public void RemoveItemFromCart(string title)
         {
-            IWebElement removeLink = driver.FindElementSafe(By.XPath(ConfigXPath(title,REMOVE_FROM_CART)));
+            IWebElement removeLink = driver.FindElementSafe(By.XPath(ConfigActionLinkXPath(title,REMOVE_FROM_CART)));
             if (removeLink.Exists()) removeLink.Click();
         }
 
         public void AddToSaveForLaterList(string title)
         {
-            IWebElement addToLaterLink = driver.FindElementSafe(By.XPath(ConfigXPath(title,SAVE_FOR_LATER)));
+            IWebElement addToLaterLink = driver.FindElementSafe(By.XPath(ConfigActionLinkXPath(title,SAVE_FOR_LATER)));
             if (addToLaterLink.Exists())addToLaterLink.Click();
         }
 
         public void BackFromSaveForLaterList(string title)
         {
-            IWebElement backToCartLink = driver.FindElementSafe(By.XPath(ConfigXPath(title,FROM_LATER_TO_CART)));
+            IWebElement backToCartLink = driver.FindElementSafe(By.XPath(ConfigActionLinkXPath(title,FROM_LATER_TO_CART)));
             if (backToCartLink.Exists()) backToCartLink.Click();
         }
 
         public bool IsItemExsistInLaterList(string title)
         {
-            IWebElement itemLink = driver.FindElementSafe(By.XPath(".//*[@id='SFLSection']//a[contains(text(),'" + title + "')]"));
+            IWebElement itemLink = driver.FindElementSafe(By.XPath("//*[@id='SFLSection']//a[contains(text(),'" + title + "')]"));
             return itemLink.Exists();
         }
 
         public void RemoveFromLater(string title)
         {
-            IWebElement removeLink = driver.FindElementSafe(By.XPath(ConfigXPath(title,REMOVE_FROM_LATER)));
+            IWebElement removeLink = driver.FindElementSafe(By.XPath(ConfigActionLinkXPath(title,REMOVE_FROM_LATER)));
             if (removeLink.Exists()) removeLink.Click();
         }
 

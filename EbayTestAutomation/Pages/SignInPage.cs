@@ -11,9 +11,9 @@ namespace EbayTestAutomation.Pages
     class SignInPage : PageBase
     {
         private const string BASE_URL = "https://signin.ebay.com/ws/eBayISAPI.dll?SellItem";
-        [FindsBy(How = How.XPath, Using = ".//div[@id='pri_signin']/div[4]/span[2]/input[1]")]
+        [FindsBy(How = How.XPath, Using = "//div[@id='pri_signin']/div[4]/span[2]/input[1]")]
         private IWebElement emailInput;
-        [FindsBy(How = How.XPath, Using = ".//div[@id='pri_signin']/div[5]/span[2]/input[1]")]
+        [FindsBy(How = How.XPath, Using = "//div[@id='pri_signin']/div[5]/span[2]/input[1]")]
         private IWebElement passwordInput;
         [FindsBy(How = How.Id, Using = "csi")]
         private IWebElement stayignedCheckbox;

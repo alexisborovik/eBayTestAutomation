@@ -12,9 +12,9 @@ namespace EbayTestAutomation.Pages
     class MainPage : PageBase
     {
         private const string BASE_URL = "https://ebay.com";
-        private const string LOGOUT_LINK_XPATH = ".//li[@id='gh-uo']/a";
-        private const string CURRENT_LANG_XPATH = ".//a[@id='gh-eb-Geo-a-default']/span[@class='gh-eb-Geo-txt']";
-        private const string AVAILABLE_LANG_XPATH = ".//a[@id='gh-eb-Geo-a-en']/span[@class='gh-eb-Geo-txt']";
+        private const string LOGOUT_LINK_XPATH = "//li[@id='gh-uo']/a";
+        private const string CURRENT_LANG_XPATH = "//a[@id='gh-eb-Geo-a-default']/span[@class='gh-eb-Geo-txt']";
+        private const string AVAILABLE_LANG_XPATH = "//a[@id='gh-eb-Geo-a-en']/span[@class='gh-eb-Geo-txt']";
 
         [FindsBy(How = How.Id, Using = "gh-eb-u")]
         private IWebElement userMenu;
@@ -45,15 +45,10 @@ namespace EbayTestAutomation.Pages
             return exitLink.Exists();
         }
 
-        public bool TryLogOut()
+        public void LogOut()
         {
             IWebElement exitLink = driver.FindElementSafe(By.XPath(LOGOUT_LINK_XPATH));
-            if (exitLink.Exists())
-            {
-                exitLink.Click();
-                return true;
-            }
-            else return false;
+            if (exitLink.Exists()) exitLink.Click(); ;
         }
 
         public void OpenGeoMenu()

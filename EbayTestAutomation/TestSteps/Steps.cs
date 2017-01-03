@@ -65,7 +65,7 @@ namespace EbayTestAutomation.Steps
         public bool GoToShopping()
         {
             RegistrationPage rp = new RegistrationPage(driver);
-            return rp.TryGoShopping();
+            return rp.GoShopping();
         }
 
         public void SignIn(string login, string pass, bool staySigned)
@@ -88,12 +88,12 @@ namespace EbayTestAutomation.Steps
             return mp.IsSignedIn();
         }
 
-        public bool TryLogout()
+        public void Logout()
         {
             MainPage mp = new MainPage(driver);
             mp.LoadPage();
             mp.OpenUserMenu();
-            return mp.TryLogOut();
+            mp.LogOut();
         }
 
         public string GetCurrentLang()
